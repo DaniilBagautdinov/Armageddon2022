@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A523BBA228142F5D00E0BCA7 /* AsteroidsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBA128142F5D00E0BCA7 /* AsteroidsTableViewCell.swift */; };
+		A523BBAD2814437800E0BCA7 /* Armageddon2022.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A523BBAB2814437800E0BCA7 /* Armageddon2022.xcdatamodeld */; };
+		A523BBAF2814522700E0BCA7 /* Asteroids.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBAE2814522700E0BCA7 /* Asteroids.swift */; };
+		A523BBB1281458F400E0BCA7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBB0281458F400E0BCA7 /* NetworkService.swift */; };
+		A523BBDC2814704D00E0BCA7 /* RelativeVelocityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBCE2814704D00E0BCA7 /* RelativeVelocityEntity+CoreDataClass.swift */; };
+		A523BBDD2814704D00E0BCA7 /* RelativeVelocityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBCF2814704D00E0BCA7 /* RelativeVelocityEntity+CoreDataProperties.swift */; };
+		A523BBDE2814704D00E0BCA7 /* MetersEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBD02814704D00E0BCA7 /* MetersEntity+CoreDataClass.swift */; };
+		A523BBDF2814704D00E0BCA7 /* MetersEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBD12814704D00E0BCA7 /* MetersEntity+CoreDataProperties.swift */; };
+		A523BBE02814704D00E0BCA7 /* MissDistanceEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBD22814704D00E0BCA7 /* MissDistanceEntity+CoreDataClass.swift */; };
+		A523BBE12814704D00E0BCA7 /* MissDistanceEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBD32814704D00E0BCA7 /* MissDistanceEntity+CoreDataProperties.swift */; };
+		A523BBE22814704D00E0BCA7 /* EstimatedDiameterEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBD42814704D00E0BCA7 /* EstimatedDiameterEntity+CoreDataClass.swift */; };
+		A523BBE32814704D00E0BCA7 /* EstimatedDiameterEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBD52814704D00E0BCA7 /* EstimatedDiameterEntity+CoreDataProperties.swift */; };
+		A523BBE42814704D00E0BCA7 /* AsteroidsEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBD62814704D00E0BCA7 /* AsteroidsEntity+CoreDataClass.swift */; };
+		A523BBE52814704D00E0BCA7 /* AsteroidsEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBD72814704D00E0BCA7 /* AsteroidsEntity+CoreDataProperties.swift */; };
+		A523BBE62814704D00E0BCA7 /* NearEarthObjectEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBD82814704D00E0BCA7 /* NearEarthObjectEntity+CoreDataClass.swift */; };
+		A523BBE72814704D00E0BCA7 /* NearEarthObjectEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBD92814704D00E0BCA7 /* NearEarthObjectEntity+CoreDataProperties.swift */; };
+		A523BBE82814704D00E0BCA7 /* CloseApproachDataEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBDA2814704D00E0BCA7 /* CloseApproachDataEntity+CoreDataClass.swift */; };
+		A523BBE92814704D00E0BCA7 /* CloseApproachDataEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBDB2814704D00E0BCA7 /* CloseApproachDataEntity+CoreDataProperties.swift */; };
 		A5C2E65328133366008869AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2E65228133366008869AB /* AppDelegate.swift */; };
 		A5C2E65528133366008869AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2E65428133366008869AB /* SceneDelegate.swift */; };
 		A5C2E65728133366008869AB /* AsteroidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2E65628133366008869AB /* AsteroidsViewController.swift */; };
@@ -16,6 +34,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A523BBA128142F5D00E0BCA7 /* AsteroidsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidsTableViewCell.swift; sourceTree = "<group>"; };
+		A523BBAC2814437800E0BCA7 /* Armageddon2022.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Armageddon2022.xcdatamodel; sourceTree = "<group>"; };
+		A523BBAE2814522700E0BCA7 /* Asteroids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroids.swift; sourceTree = "<group>"; };
+		A523BBB0281458F400E0BCA7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		A523BBCE2814704D00E0BCA7 /* RelativeVelocityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RelativeVelocityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A523BBCF2814704D00E0BCA7 /* RelativeVelocityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RelativeVelocityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A523BBD02814704D00E0BCA7 /* MetersEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetersEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A523BBD12814704D00E0BCA7 /* MetersEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetersEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A523BBD22814704D00E0BCA7 /* MissDistanceEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MissDistanceEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A523BBD32814704D00E0BCA7 /* MissDistanceEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MissDistanceEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A523BBD42814704D00E0BCA7 /* EstimatedDiameterEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EstimatedDiameterEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A523BBD52814704D00E0BCA7 /* EstimatedDiameterEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EstimatedDiameterEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A523BBD62814704D00E0BCA7 /* AsteroidsEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsteroidsEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A523BBD72814704D00E0BCA7 /* AsteroidsEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsteroidsEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A523BBD82814704D00E0BCA7 /* NearEarthObjectEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NearEarthObjectEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A523BBD92814704D00E0BCA7 /* NearEarthObjectEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NearEarthObjectEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A523BBDA2814704D00E0BCA7 /* CloseApproachDataEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloseApproachDataEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A523BBDB2814704D00E0BCA7 /* CloseApproachDataEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloseApproachDataEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5C2E64F28133366008869AB /* Armageddon2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Armageddon2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C2E65228133366008869AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C2E65428133366008869AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +73,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A523BB9D28142C5E00E0BCA7 /* Asteroids */ = {
+			isa = PBXGroup;
+			children = (
+				A523BB9E28142C8D00E0BCA7 /* View */,
+				A5C2E65628133366008869AB /* AsteroidsViewController.swift */,
+			);
+			path = Asteroids;
+			sourceTree = "<group>";
+		};
+		A523BB9E28142C8D00E0BCA7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A523BBA128142F5D00E0BCA7 /* AsteroidsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A523BBA62814418F00E0BCA7 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A5C2E65828133366008869AB /* Main.storyboard */,
+				A523BB9D28142C5E00E0BCA7 /* Asteroids */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A523BBA7281441A400E0BCA7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A523BBB0281458F400E0BCA7 /* NetworkService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A523BBA8281441B000E0BCA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A523BBAE2814522700E0BCA7 /* Asteroids.swift */,
+				A523BBCE2814704D00E0BCA7 /* RelativeVelocityEntity+CoreDataClass.swift */,
+				A523BBCF2814704D00E0BCA7 /* RelativeVelocityEntity+CoreDataProperties.swift */,
+				A523BBD02814704D00E0BCA7 /* MetersEntity+CoreDataClass.swift */,
+				A523BBD12814704D00E0BCA7 /* MetersEntity+CoreDataProperties.swift */,
+				A523BBD22814704D00E0BCA7 /* MissDistanceEntity+CoreDataClass.swift */,
+				A523BBD32814704D00E0BCA7 /* MissDistanceEntity+CoreDataProperties.swift */,
+				A523BBD42814704D00E0BCA7 /* EstimatedDiameterEntity+CoreDataClass.swift */,
+				A523BBD52814704D00E0BCA7 /* EstimatedDiameterEntity+CoreDataProperties.swift */,
+				A523BBD62814704D00E0BCA7 /* AsteroidsEntity+CoreDataClass.swift */,
+				A523BBD72814704D00E0BCA7 /* AsteroidsEntity+CoreDataProperties.swift */,
+				A523BBD82814704D00E0BCA7 /* NearEarthObjectEntity+CoreDataClass.swift */,
+				A523BBD92814704D00E0BCA7 /* NearEarthObjectEntity+CoreDataProperties.swift */,
+				A523BBDA2814704D00E0BCA7 /* CloseApproachDataEntity+CoreDataClass.swift */,
+				A523BBDB2814704D00E0BCA7 /* CloseApproachDataEntity+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A523BBAA281441F700E0BCA7 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A5C2E65B28133369008869AB /* Assets.xcassets */,
+				A5C2E65D28133369008869AB /* LaunchScreen.storyboard */,
+				A5C2E66028133369008869AB /* Info.plist */,
+				A523BBAB2814437800E0BCA7 /* Armageddon2022.xcdatamodeld */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		A5C2E64628133366008869AB = {
 			isa = PBXGroup;
 			children = (
@@ -58,11 +161,10 @@
 			children = (
 				A5C2E65228133366008869AB /* AppDelegate.swift */,
 				A5C2E65428133366008869AB /* SceneDelegate.swift */,
-				A5C2E65628133366008869AB /* AsteroidsViewController.swift */,
-				A5C2E65828133366008869AB /* Main.storyboard */,
-				A5C2E65B28133369008869AB /* Assets.xcassets */,
-				A5C2E65D28133369008869AB /* LaunchScreen.storyboard */,
-				A5C2E66028133369008869AB /* Info.plist */,
+				A523BBA62814418F00E0BCA7 /* Presentation */,
+				A523BBA7281441A400E0BCA7 /* Service */,
+				A523BBA8281441B000E0BCA7 /* Model */,
+				A523BBAA281441F700E0BCA7 /* Resource */,
 			);
 			path = Armageddon2022;
 			sourceTree = "<group>";
@@ -83,6 +185,8 @@
 			dependencies = (
 			);
 			name = Armageddon2022;
+			packageProductDependencies = (
+			);
 			productName = Armageddon2022;
 			productReference = A5C2E64F28133366008869AB /* Armageddon2022.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +215,8 @@
 				Base,
 			);
 			mainGroup = A5C2E64628133366008869AB;
+			packageReferences = (
+			);
 			productRefGroup = A5C2E65028133366008869AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +244,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A523BBE22814704D00E0BCA7 /* EstimatedDiameterEntity+CoreDataClass.swift in Sources */,
+				A523BBDE2814704D00E0BCA7 /* MetersEntity+CoreDataClass.swift in Sources */,
+				A523BBE02814704D00E0BCA7 /* MissDistanceEntity+CoreDataClass.swift in Sources */,
+				A523BBAF2814522700E0BCA7 /* Asteroids.swift in Sources */,
+				A523BBE32814704D00E0BCA7 /* EstimatedDiameterEntity+CoreDataProperties.swift in Sources */,
+				A523BBE92814704D00E0BCA7 /* CloseApproachDataEntity+CoreDataProperties.swift in Sources */,
+				A523BBE42814704D00E0BCA7 /* AsteroidsEntity+CoreDataClass.swift in Sources */,
+				A523BBE12814704D00E0BCA7 /* MissDistanceEntity+CoreDataProperties.swift in Sources */,
+				A523BBDC2814704D00E0BCA7 /* RelativeVelocityEntity+CoreDataClass.swift in Sources */,
+				A523BBDD2814704D00E0BCA7 /* RelativeVelocityEntity+CoreDataProperties.swift in Sources */,
+				A523BBE82814704D00E0BCA7 /* CloseApproachDataEntity+CoreDataClass.swift in Sources */,
+				A523BBAD2814437800E0BCA7 /* Armageddon2022.xcdatamodeld in Sources */,
 				A5C2E65728133366008869AB /* AsteroidsViewController.swift in Sources */,
+				A523BBA228142F5D00E0BCA7 /* AsteroidsTableViewCell.swift in Sources */,
 				A5C2E65328133366008869AB /* AppDelegate.swift in Sources */,
+				A523BBE72814704D00E0BCA7 /* NearEarthObjectEntity+CoreDataProperties.swift in Sources */,
+				A523BBDF2814704D00E0BCA7 /* MetersEntity+CoreDataProperties.swift in Sources */,
 				A5C2E65528133366008869AB /* SceneDelegate.swift in Sources */,
+				A523BBE52814704D00E0BCA7 /* AsteroidsEntity+CoreDataProperties.swift in Sources */,
+				A523BBE62814704D00E0BCA7 /* NearEarthObjectEntity+CoreDataClass.swift in Sources */,
+				A523BBB1281458F400E0BCA7 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +412,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Armageddon2022/Info.plist;
+				INFOPLIST_FILE = Armageddon2022/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -315,7 +439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Armageddon2022/Info.plist;
+				INFOPLIST_FILE = Armageddon2022/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -356,6 +480,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A523BBAB2814437800E0BCA7 /* Armageddon2022.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A523BBAC2814437800E0BCA7 /* Armageddon2022.xcdatamodel */,
+			);
+			currentVersion = A523BBAC2814437800E0BCA7 /* Armageddon2022.xcdatamodel */;
+			path = Armageddon2022.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A5C2E64728133366008869AB /* Project object */;
 }

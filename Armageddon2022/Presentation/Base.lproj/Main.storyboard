@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-823" y="84"/>
         </scene>
-        <!--Армагеддон 2022-->
+        <!--Asteroids View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AsteroidsViewController" customModule="Armageddon2022" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Asteroids View Controller" customClass="AsteroidsViewController" customModule="Armageddon2022" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q7z-bO-L7w">
                                 <rect key="frame" x="0.0" y="88" width="428" height="755"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="349" id="gnv-1o-bwW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="349" id="gnv-1o-bwW" customClass="AsteroidsTableViewCell" customModule="Armageddon2022" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="349"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gnv-1o-bwW" id="FCi-NA-jFO">
@@ -60,6 +60,7 @@
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="09G-mf-S3n" secondAttribute="trailing" constant="20" symbolic="YES" id="GMD-3y-ybZ"/>
                                                                 <constraint firstItem="09G-mf-S3n" firstAttribute="leading" secondItem="gNO-Mp-LDX" secondAttribute="leading" constant="15" id="QHg-B4-RfX"/>
                                                                 <constraint firstAttribute="bottom" secondItem="XA7-g8-pAo" secondAttribute="bottom" id="Xa7-4U-4Xv"/>
                                                                 <constraint firstItem="XA7-g8-pAo" firstAttribute="top" secondItem="gNO-Mp-LDX" secondAttribute="top" id="kDs-ug-Scm"/>
@@ -106,6 +107,9 @@
                                                                             <integer key="value" value="10"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="destroyButton:" destination="gnv-1o-bwW" eventType="touchUpInside" id="0LD-b0-TYa"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -152,6 +156,14 @@
                                                 <constraint firstAttribute="bottom" secondItem="Vfw-3d-WuX" secondAttribute="bottom" constant="16" id="osQ-MX-Gap"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="asteroidDateLabel" destination="HjA-WE-0b1" id="FZA-fJ-TVs"/>
+                                            <outlet property="asteroidDiameterLabel" destination="jp6-tC-HXn" id="Eae-Gj-oyg"/>
+                                            <outlet property="asteroidDistanceLabel" destination="U6g-gb-rnc" id="le7-vB-EQi"/>
+                                            <outlet property="asteroidEstimationLabel" destination="MpA-Hg-Jz5" id="jqR-8N-o0n"/>
+                                            <outlet property="asteroidImageView" destination="XA7-g8-pAo" id="Snk-pq-rgU"/>
+                                            <outlet property="asteroidNameLabel" destination="09G-mf-S3n" id="1Nj-BU-UjG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -174,7 +186,22 @@
                             <constraint firstItem="xI4-j8-G0V" firstAttribute="top" secondItem="Q7z-bO-L7w" secondAttribute="bottom" id="iBR-Md-Cuj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Армагеддон 2022" id="SQ4-ke-lpT"/>
+                    <navigationItem key="navigationItem" title="Армагеддон 2022" id="SQ4-ke-lpT">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="YzI-ba-FNJ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9wd-GV-yNT">
+                                <rect key="frame" x="357" y="5" width="51" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal.decrease" catalog="system"/>
+                                <connections>
+                                    <action selector="filterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lX7-bb-OoB"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Q7z-bO-L7w" id="m5L-6w-Yi1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,6 +210,7 @@
     </scenes>
     <resources>
         <image name="asteroid 1" width="680" height="290"/>
+        <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
