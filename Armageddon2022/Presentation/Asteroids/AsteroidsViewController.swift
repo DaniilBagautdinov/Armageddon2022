@@ -11,7 +11,7 @@ class AsteroidsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var network = NetworkService()
+    var asteroids: [Asteroid] = DataService.shared.getAllAsteroids()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +25,17 @@ class AsteroidsViewController: UIViewController {
     private func configure() {
         tableView.delegate = self
         tableView.dataSource = self
-        network.getAsteroids { asteroids in
-            print(asteroids.nearEarthObjects?.values)
-        }
     }
 }
 
 extension AsteroidsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return asteroids.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AsteroidsTableViewCell", for: indexPath) as? AsteroidsTableViewCell else { return UITableViewCell()}
+        cell.setData(asteroid: asteroids[indexPath.row])
+        return cell
     }
 }

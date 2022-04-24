@@ -1,55 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="AsteroidsEntity" representedClassName="AsteroidsEntity" syncable="YES">
+    <entity name="AsteroidEntity" representedClassName="AsteroidEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String"/>
-        <relationship name="nearEarthObjects" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NearEarthObjectEntity" inverseName="asteroids" inverseEntity="NearEarthObjectEntity"/>
-    </entity>
-    <entity name="CloseApproachDataEntity" representedClassName="CloseApproachDataEntity" syncable="YES">
-        <attribute name="closeApproachDate" optional="YES" attributeType="String"/>
-        <attribute name="closeApproachDateFull" optional="YES" attributeType="String"/>
-        <attribute name="epochDateCloseApproach" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="orbitingBody" optional="YES" attributeType="String"/>
-        <relationship name="missDistance" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MissDistanceEntity" inverseName="closeApproachData" inverseEntity="MissDistanceEntity"/>
-        <relationship name="nearEarthObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NearEarthObjectEntity" inverseName="closeApproachData" inverseEntity="NearEarthObjectEntity"/>
-        <relationship name="relativeVelocity" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RelativeVelocityEntity" inverseName="closeApproachData" inverseEntity="RelativeVelocityEntity"/>
-    </entity>
-    <entity name="EstimatedDiameterEntity" representedClassName="EstimatedDiameterEntity" syncable="YES">
-        <relationship name="meters" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MetersEntity" inverseName="estimatedDiameter" inverseEntity="MetersEntity"/>
-        <relationship name="nearEarthObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NearEarthObjectEntity" inverseName="estimatedDiameter" inverseEntity="NearEarthObjectEntity"/>
-    </entity>
-    <entity name="MetersEntity" representedClassName="MetersEntity" syncable="YES">
-        <attribute name="estimatedDiameterMax" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="estimatedDiameterMin" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="estimatedDiameter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EstimatedDiameterEntity" inverseName="meters" inverseEntity="EstimatedDiameterEntity"/>
-    </entity>
-    <entity name="MissDistanceEntity" representedClassName="MissDistanceEntity" syncable="YES">
-        <attribute name="kilometers" optional="YES" attributeType="String"/>
-        <attribute name="lunar" optional="YES" attributeType="String"/>
-        <relationship name="closeApproachData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CloseApproachDataEntity" inverseName="missDistance" inverseEntity="CloseApproachDataEntity"/>
-    </entity>
-    <entity name="NearEarthObjectEntity" representedClassName="NearEarthObjectEntity" syncable="YES">
+        <attribute name="diameterMax" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="diameterMin" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="isPotentiallyHazardousAsteroid" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isSentryObject" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isPotentiallyHazardousAsteroid" optional="YES" attributeType="Boolean" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="missDistance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="neoReferenceId" optional="YES" attributeType="String"/>
-        <relationship name="asteroids" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AsteroidsEntity" inverseName="nearEarthObjects" inverseEntity="AsteroidsEntity"/>
-        <relationship name="closeApproachData" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CloseApproachDataEntity" inverseName="nearEarthObject" inverseEntity="CloseApproachDataEntity"/>
-        <relationship name="estimatedDiameter" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EstimatedDiameterEntity" inverseName="nearEarthObject" inverseEntity="EstimatedDiameterEntity"/>
-    </entity>
-    <entity name="RelativeVelocityEntity" representedClassName="RelativeVelocityEntity" syncable="YES">
-        <attribute name="kilometersPerHour" optional="YES" attributeType="String"/>
-        <attribute name="kilometersPerSecond" optional="YES" attributeType="String"/>
-        <attribute name="milesPerHour" optional="YES" attributeType="String"/>
-        <relationship name="closeApproachData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CloseApproachDataEntity" inverseName="relativeVelocity" inverseEntity="CloseApproachDataEntity"/>
     </entity>
     <elements>
-        <element name="AsteroidsEntity" positionX="48.08203125" positionY="-183.46875" width="128" height="59"/>
-        <element name="NearEarthObjectEntity" positionX="-220.9453125" positionY="-101.48046875" width="128" height="149"/>
-        <element name="EstimatedDiameterEntity" positionX="-140.6640625" positionY="20.5234375" width="128" height="59"/>
-        <element name="CloseApproachDataEntity" positionX="52.62890625" positionY="-13.6796875" width="128" height="134"/>
-        <element name="MetersEntity" positionX="18" positionY="72" width="128" height="74"/>
-        <element name="RelativeVelocityEntity" positionX="18" positionY="0" width="128" height="89"/>
-        <element name="MissDistanceEntity" positionX="-36" positionY="-54" width="128" height="74"/>
+        <element name="AsteroidEntity" positionX="48.08203125" positionY="-183.46875" width="128" height="134"/>
     </elements>
 </model>
