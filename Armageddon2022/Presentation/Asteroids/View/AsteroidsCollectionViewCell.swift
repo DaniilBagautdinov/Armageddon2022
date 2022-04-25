@@ -1,13 +1,13 @@
 //
-//  AsteroidsTableViewCell.swift
+//  AsteroidsCollectionViewCell.swift
 //  Armageddon2022
 //
-//  Created by Даниил Багаутдинов on 23.04.2022.
+//  Created by Даниил Багаутдинов on 25.04.2022.
 //
 
 import UIKit
 
-class AsteroidsTableViewCell: UITableViewCell {
+class AsteroidsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var asteroidImageView: UIImageView!
     @IBOutlet weak var asteroidNameLabel: UILabel!
@@ -16,21 +16,13 @@ class AsteroidsTableViewCell: UITableViewCell {
     @IBOutlet weak var asteroidDistanceLabel: UILabel!
     @IBOutlet weak var asteroidEstimationLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
     @IBAction func destroyButton(_ sender: Any) {
-        
     }
     
     func setData(asteroid: Asteroid) {
+        configureViewCell()
         asteroidImageView.image = setImage(asteroid: asteroid)
-        asteroidNameLabel.text = "\(asteroid.name ?? "")"
+        asteroidNameLabel.text = setName(asteroid: asteroid)
         asteroidDiameterLabel.text = "Диаметр: \(Int((asteroid.diameterMax + asteroid.diameterMin)/2)) м"
         asteroidDateLabel.text = setDate(asteroid: asteroid)
         asteroidDistanceLabel.text = "на расстояние \(Int(asteroid.missDistance).description) км"
@@ -39,6 +31,12 @@ class AsteroidsTableViewCell: UITableViewCell {
         } else {
             asteroidEstimationLabel.text = "Оценка: не опасен"
         }
+    }
+    
+    private func configureViewCell() {
+        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderWidth = 0.3
+        layer.cornerRadius = 15
     }
     
     private func setImage(asteroid: Asteroid) -> UIImage? {
@@ -65,10 +63,22 @@ class AsteroidsTableViewCell: UITableViewCell {
         return UIImage()
     }
     
+    private func setName(asteroid: Asteroid) -> String? {
+        var result = ""
+        if let index = asteroid.name?.range(of: "(")?.lowerBound {
+            result = String(asteroid.name?[index...] ?? "")
+        }
+        if result.first == "(" {
+            result.removeFirst()
+            result.removeLast()
+        }
+        return result
+    }
+    
     private func setDate(asteroid: Asteroid) -> String{
         var dates = asteroid.date?.split(separator: "-")
         var mounth = ""
-        if ((dates?[2].contains("0")) != nil) {
+        if dates?[2].first == "0" {
             dates?[2].removeFirst()
         }
         switch(dates?[1]) {

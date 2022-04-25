@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A523BBA228142F5D00E0BCA7 /* AsteroidsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBA128142F5D00E0BCA7 /* AsteroidsTableViewCell.swift */; };
 		A523BBAD2814437800E0BCA7 /* Armageddon2022.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A523BBAB2814437800E0BCA7 /* Armageddon2022.xcdatamodeld */; };
 		A523BBAF2814522700E0BCA7 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBAE2814522700E0BCA7 /* Asteroid.swift */; };
 		A523BBB1281458F400E0BCA7 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBB0281458F400E0BCA7 /* DataService.swift */; };
@@ -15,6 +14,7 @@
 		A59CCF8128155F680003DB29 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A59CCF8028155F680003DB29 /* Alamofire */; };
 		A59CCF8C281588910003DB29 /* AsteroidEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59CCF8A281588900003DB29 /* AsteroidEntity+CoreDataClass.swift */; };
 		A59CCF8D281588910003DB29 /* AsteroidEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59CCF8B281588910003DB29 /* AsteroidEntity+CoreDataProperties.swift */; };
+		A5AA24752816C6A600353AA1 /* AsteroidsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA24742816C6A600353AA1 /* AsteroidsCollectionViewCell.swift */; };
 		A5C2E65328133366008869AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2E65228133366008869AB /* AppDelegate.swift */; };
 		A5C2E65528133366008869AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2E65428133366008869AB /* SceneDelegate.swift */; };
 		A5C2E65728133366008869AB /* AsteroidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2E65628133366008869AB /* AsteroidsViewController.swift */; };
@@ -24,12 +24,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A523BBA128142F5D00E0BCA7 /* AsteroidsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidsTableViewCell.swift; sourceTree = "<group>"; };
 		A523BBAC2814437800E0BCA7 /* Armageddon2022.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Armageddon2022.xcdatamodel; sourceTree = "<group>"; };
 		A523BBAE2814522700E0BCA7 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 		A523BBB0281458F400E0BCA7 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		A59CCF8A281588900003DB29 /* AsteroidEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsteroidEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A59CCF8B281588910003DB29 /* AsteroidEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsteroidEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5AA24742816C6A600353AA1 /* AsteroidsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5C2E64F28133366008869AB /* Armageddon2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Armageddon2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C2E65228133366008869AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C2E65428133366008869AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		A523BB9E28142C8D00E0BCA7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A523BBA128142F5D00E0BCA7 /* AsteroidsTableViewCell.swift */,
+				A5AA24742816C6A600353AA1 /* AsteroidsCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,12 +219,12 @@
 				A523BBAF2814522700E0BCA7 /* Asteroid.swift in Sources */,
 				A523BBAD2814437800E0BCA7 /* Armageddon2022.xcdatamodeld in Sources */,
 				A5C2E65728133366008869AB /* AsteroidsViewController.swift in Sources */,
-				A523BBA228142F5D00E0BCA7 /* AsteroidsTableViewCell.swift in Sources */,
 				A5C2E65328133366008869AB /* AppDelegate.swift in Sources */,
 				A59CCF8C281588910003DB29 /* AsteroidEntity+CoreDataClass.swift in Sources */,
 				A5C2E65528133366008869AB /* SceneDelegate.swift in Sources */,
 				A523BBB1281458F400E0BCA7 /* DataService.swift in Sources */,
 				A59CCF8D281588910003DB29 /* AsteroidEntity+CoreDataProperties.swift in Sources */,
+				A5AA24752816C6A600353AA1 /* AsteroidsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +388,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -416,7 +416,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

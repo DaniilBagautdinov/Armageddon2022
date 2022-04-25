@@ -64,7 +64,18 @@ final class DataService {
         }
         return asteroids
     }
-        
+    
+    func getLastAsteroid() -> AsteroidEntity? {
+        let fetchRequest = AsteroidEntity.fetchRequest()
+        do {
+            let asteroidsEntity = try viewContext.fetch(fetchRequest)
+            return asteroidsEntity.last
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
     func getData(date: Date) {
         let operationQueue = OperationQueue()
         operationQueue.addOperation { [self] in
@@ -73,19 +84,23 @@ final class DataService {
             AF.request(url).response { response in
                 switch response.result {
                 case .success(let value):
-                    let json = JSON(value!)
-                    for date in dates {
-                        for asteroid in json["near_earth_objects"][date] {
-                            self.addAsteroidEntity(asteroid: Asteroid(name: asteroid.1["name"].stringValue, id: asteroid.1["id"].stringValue, date: date, diameterMax: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_max"].doubleValue, diameterMin: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_min"].doubleValue, missDistance: asteroid.1["close_approach_data"][0]["miss_distance"]["kilometers"].doubleValue, isPotentiallyHazardousAsteroid: asteroid.1["is_potentially_hazardous_asteroid"].boolValue))
-
+                    DispatchQueue.main.async { [self] in
+                        let json = JSON(value!)
+                        for date in dates {
+                            for asteroid in json["near_earth_objects"][date] {
+                                self.addAsteroidEntity(asteroid: Asteroid(name: asteroid.1["name"].stringValue, id: asteroid.1["id"].stringValue, date: date, diameterMax: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_max"].doubleValue, diameterMin: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_min"].doubleValue, missDistance: asteroid.1["close_approach_data"][0]["miss_distance"]["kilometers"].doubleValue, isPotentiallyHazardousAsteroid: asteroid.1["is_potentially_hazardous_asteroid"].boolValue))
+                                
+                            }
                         }
+                        print("DONE")
                     }
-//                    print("JSON: \(json)")
+                    //                    print("JSON: \(json)")
                 case .failure(let error):
                     print(error)
                 }
             }
         }
+        
     }
     
     func generateDates(date: Date) -> [String] {
@@ -115,7 +130,7 @@ final class DataService {
             count += 1
             date += 86400
         }
-            
+        
         return result
     }
 }
