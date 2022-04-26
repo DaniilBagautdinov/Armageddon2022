@@ -24,6 +24,7 @@ extension AsteroidEntity {
     @NSManaged public var missDistanceKilometers: Double
     @NSManaged public var name: String?
     @NSManaged public var missDistanceLunar: Double
+    @NSManaged public var isDestroy: Bool
 
 }
 

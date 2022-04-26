@@ -5,12 +5,13 @@
         <attribute name="diameterMax" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="diameterMin" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isDestroy" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isPotentiallyHazardousAsteroid" optional="YES" attributeType="Boolean" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="missDistanceKilometers" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="missDistanceLunar" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="AsteroidEntity" positionX="48.08203125" positionY="-183.46875" width="128" height="149"/>
+        <element name="AsteroidEntity" positionX="48.08203125" positionY="-183.46875" width="128" height="164"/>
     </elements>
 </model>

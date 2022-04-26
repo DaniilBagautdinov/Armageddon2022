@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AsteroidsCollectionViewCellDelegate: AnyObject {
+    func updateInfo()
+}
+
 class AsteroidsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var asteroidImageView: UIImageView!
@@ -15,8 +19,12 @@ class AsteroidsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var asteroidDateLabel: UILabel!
     @IBOutlet weak var asteroidDistanceLabel: UILabel!
     @IBOutlet weak var asteroidEstimationLabel: UILabel!
+    var id: String?
+    weak var delegate: AsteroidsCollectionViewCellDelegate?
     
     @IBAction func destroyButton(_ sender: Any) {
+        DataService.shared.setAsteroidDestroy(id: id ?? "")
+        delegate?.updateInfo()
     }
     
     func setData(asteroid: Asteroid, distanceInKilometers: Bool) {
@@ -35,6 +43,7 @@ class AsteroidsCollectionViewCell: UICollectionViewCell {
         } else {
             asteroidEstimationLabel.text = "Оценка: не опасен"
         }
+        id = asteroid.id
         asteroidDiameterLabel.setFont()
         asteroidDateLabel.setFont()
         asteroidDistanceLabel.setFont()

@@ -25,6 +25,7 @@ class AsteroidsViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
             if allAsteroids.count == 0 {
                 allAsteroids = DataService.shared.getAllAsteroids()
+                dangerousAsteroids = DataService.shared.getAllDangerousAsteroids()
                 asteroidsNow = allAsteroids
                 asteroidsView.collectionView.reloadData()
             }
@@ -38,7 +39,7 @@ class AsteroidsViewController: UIViewController {
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+        
     private func configureView() {
         let lastAsteroidEntity = DataService.shared.getLastAsteroid()
         if lastAsteroidEntity == nil {
@@ -71,6 +72,7 @@ extension AsteroidsViewController: UICollectionViewDelegate, UICollectionViewDat
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AsteroidsCollectionViewCell", for: indexPath) as? AsteroidsCollectionViewCell else { return UICollectionViewCell()}
         if let asteroidsNow = asteroidsNow {
             cell.setData(asteroid: asteroidsNow[indexPath.row], distanceInKilometers: distanceInKilometers ?? true)
+            cell.delegate = self
         }
         return cell
     }
@@ -89,6 +91,21 @@ extension AsteroidsViewController: FilterViewControllerDelegate {
         self.isDangerousAsteroids = isDangerousAsteroids
         
         guard let asteroidsView = view as? AsteroidsView else { return }
+        if isDangerousAsteroids {
+            asteroidsNow = dangerousAsteroids
+        } else {
+            asteroidsNow = allAsteroids
+        }
+        asteroidsView.collectionView.reloadData()
+    }
+}
+
+extension AsteroidsViewController: AsteroidsCollectionViewCellDelegate {
+    func updateInfo() {
+        allAsteroids = DataService.shared.getAllAsteroids()
+        dangerousAsteroids = DataService.shared.getAllDangerousAsteroids()
+        guard let asteroidsView = view as? AsteroidsView else { return }
+        guard let isDangerousAsteroids = isDangerousAsteroids else { return }
         if isDangerousAsteroids {
             asteroidsNow = dangerousAsteroids
         } else {

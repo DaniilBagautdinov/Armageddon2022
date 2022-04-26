@@ -48,6 +48,7 @@ final class DataService {
         asteroidEntity.missDistanceLunar = asteroid.missDistanceLunar
         asteroidEntity.isPotentiallyHazardousAsteroid = asteroid.isPotentiallyHazardousAsteroid
         asteroidEntity.date = asteroid.date
+        asteroidEntity.isDestroy = false
         
         saveContext()
     }
@@ -58,7 +59,9 @@ final class DataService {
         do {
             let asteroidsEntity = try viewContext.fetch(fetchRequest)
             for asteroidEntity in asteroidsEntity {
-                asteroids.append(Asteroid(name: asteroidEntity.name, id: asteroidEntity.id, date: asteroidEntity.date, diameterMax: asteroidEntity.diameterMax, diameterMin: asteroidEntity.diameterMin, missDistanceKilometers: asteroidEntity.missDistanceKilometers, missDistanceLunar: asteroidEntity.missDistanceLunar, isPotentiallyHazardousAsteroid: asteroidEntity.isPotentiallyHazardousAsteroid))
+                if !asteroidEntity.isDestroy {
+                    asteroids.append(Asteroid(name: asteroidEntity.name, id: asteroidEntity.id, date: asteroidEntity.date, diameterMax: asteroidEntity.diameterMax, diameterMin: asteroidEntity.diameterMin, missDistanceKilometers: asteroidEntity.missDistanceKilometers, missDistanceLunar: asteroidEntity.missDistanceLunar, isPotentiallyHazardousAsteroid: asteroidEntity.isPotentiallyHazardousAsteroid))
+                }
             }
         } catch {
             print(error)
@@ -72,7 +75,23 @@ final class DataService {
         do {
             let asteroidsEntity = try viewContext.fetch(fetchRequest)
             for asteroidEntity in asteroidsEntity {
-                if asteroidEntity.isPotentiallyHazardousAsteroid {
+                if asteroidEntity.isPotentiallyHazardousAsteroid && !asteroidEntity.isDestroy{
+                    asteroids.append(Asteroid(name: asteroidEntity.name, id: asteroidEntity.id, date: asteroidEntity.date, diameterMax: asteroidEntity.diameterMax, diameterMin: asteroidEntity.diameterMin, missDistanceKilometers: asteroidEntity.missDistanceKilometers, missDistanceLunar: asteroidEntity.missDistanceLunar, isPotentiallyHazardousAsteroid: asteroidEntity.isPotentiallyHazardousAsteroid))
+                }
+            }
+        } catch {
+            print(error)
+        }
+        return asteroids
+    }
+    
+    func getAllDestroyAsteroids() -> [Asteroid] {
+        let fetchRequest = AsteroidEntity.fetchRequest()
+        var asteroids: [Asteroid] = []
+        do {
+            let asteroidsEntity = try viewContext.fetch(fetchRequest)
+            for asteroidEntity in asteroidsEntity {
+                if asteroidEntity.isDestroy {
                     asteroids.append(Asteroid(name: asteroidEntity.name, id: asteroidEntity.id, date: asteroidEntity.date, diameterMax: asteroidEntity.diameterMax, diameterMin: asteroidEntity.diameterMin, missDistanceKilometers: asteroidEntity.missDistanceKilometers, missDistanceLunar: asteroidEntity.missDistanceLunar, isPotentiallyHazardousAsteroid: asteroidEntity.isPotentiallyHazardousAsteroid))
                 }
             }
@@ -91,6 +110,19 @@ final class DataService {
             print(error)
         }
         return nil
+    }
+    
+    func setAsteroidDestroy(id: String) {
+        let fetchRequest = AsteroidEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            let asteroidsEntity = try viewContext.fetch(fetchRequest)
+            guard let asteroidEntity = asteroidsEntity.first else { return }
+            asteroidEntity.isDestroy = true
+            saveContext()
+        } catch {
+            print(error)
+        }
     }
     
     func getData(date: Date) {
