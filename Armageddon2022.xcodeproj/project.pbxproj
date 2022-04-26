@@ -10,10 +10,14 @@
 		A523BBAD2814437800E0BCA7 /* Armageddon2022.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A523BBAB2814437800E0BCA7 /* Armageddon2022.xcdatamodeld */; };
 		A523BBAF2814522700E0BCA7 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBAE2814522700E0BCA7 /* Asteroid.swift */; };
 		A523BBB1281458F400E0BCA7 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BBB0281458F400E0BCA7 /* DataService.swift */; };
+		A52DE7502817BCF50008A969 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DE74F2817BCF50008A969 /* FilterViewController.swift */; };
+		A52DE7532817C1190008A969 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DE7522817C1190008A969 /* UILabel+Extensions.swift */; };
+		A5840CE6281805C800F15A36 /* AsteroidsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5840CE5281805C800F15A36 /* AsteroidsView.swift */; };
+		A5840CE9281806F800F15A36 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5840CE8281806F800F15A36 /* FilterView.swift */; };
+		A5840CF42818216600F15A36 /* AsteroidEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5840CF22818216600F15A36 /* AsteroidEntity+CoreDataClass.swift */; };
+		A5840CF52818216600F15A36 /* AsteroidEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5840CF32818216600F15A36 /* AsteroidEntity+CoreDataProperties.swift */; };
 		A59CCF7E28155D860003DB29 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = A59CCF7D28155D860003DB29 /* SwiftyJSON */; };
 		A59CCF8128155F680003DB29 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A59CCF8028155F680003DB29 /* Alamofire */; };
-		A59CCF8C281588910003DB29 /* AsteroidEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59CCF8A281588900003DB29 /* AsteroidEntity+CoreDataClass.swift */; };
-		A59CCF8D281588910003DB29 /* AsteroidEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59CCF8B281588910003DB29 /* AsteroidEntity+CoreDataProperties.swift */; };
 		A5AA24752816C6A600353AA1 /* AsteroidsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA24742816C6A600353AA1 /* AsteroidsCollectionViewCell.swift */; };
 		A5C2E65328133366008869AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2E65228133366008869AB /* AppDelegate.swift */; };
 		A5C2E65528133366008869AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2E65428133366008869AB /* SceneDelegate.swift */; };
@@ -27,8 +31,12 @@
 		A523BBAC2814437800E0BCA7 /* Armageddon2022.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Armageddon2022.xcdatamodel; sourceTree = "<group>"; };
 		A523BBAE2814522700E0BCA7 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 		A523BBB0281458F400E0BCA7 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		A59CCF8A281588900003DB29 /* AsteroidEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsteroidEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A59CCF8B281588910003DB29 /* AsteroidEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsteroidEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A52DE74F2817BCF50008A969 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		A52DE7522817C1190008A969 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		A5840CE5281805C800F15A36 /* AsteroidsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidsView.swift; sourceTree = "<group>"; };
+		A5840CE8281806F800F15A36 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		A5840CF22818216600F15A36 /* AsteroidEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsteroidEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5840CF32818216600F15A36 /* AsteroidEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsteroidEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5AA24742816C6A600353AA1 /* AsteroidsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5C2E64F28133366008869AB /* Armageddon2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Armageddon2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C2E65228133366008869AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				A5AA24742816C6A600353AA1 /* AsteroidsCollectionViewCell.swift */,
+				A5840CE5281805C800F15A36 /* AsteroidsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -75,6 +84,7 @@
 			children = (
 				A5C2E65828133366008869AB /* Main.storyboard */,
 				A523BB9D28142C5E00E0BCA7 /* Asteroids */,
+				A52DE74E2817BCD10008A969 /* Filter */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -91,8 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				A523BBAE2814522700E0BCA7 /* Asteroid.swift */,
-				A59CCF8A281588900003DB29 /* AsteroidEntity+CoreDataClass.swift */,
-				A59CCF8B281588910003DB29 /* AsteroidEntity+CoreDataProperties.swift */,
+				A5840CF22818216600F15A36 /* AsteroidEntity+CoreDataClass.swift */,
+				A5840CF32818216600F15A36 /* AsteroidEntity+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,6 +116,31 @@
 				A523BBAB2814437800E0BCA7 /* Armageddon2022.xcdatamodeld */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		A52DE74E2817BCD10008A969 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				A5840CE7281806EC00F15A36 /* View */,
+				A52DE74F2817BCF50008A969 /* FilterViewController.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		A52DE7512817C1010008A969 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A52DE7522817C1190008A969 /* UILabel+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A5840CE7281806EC00F15A36 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5840CE8281806F800F15A36 /* FilterView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A5C2E64628133366008869AB = {
@@ -130,6 +165,7 @@
 				A5C2E65228133366008869AB /* AppDelegate.swift */,
 				A5C2E65428133366008869AB /* SceneDelegate.swift */,
 				A523BBA62814418F00E0BCA7 /* Presentation */,
+				A52DE7512817C1010008A969 /* Extensions */,
 				A523BBA7281441A400E0BCA7 /* Service */,
 				A523BBA8281441B000E0BCA7 /* Model */,
 				A523BBAA281441F700E0BCA7 /* Resource */,
@@ -216,14 +252,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5840CE9281806F800F15A36 /* FilterView.swift in Sources */,
+				A5840CF52818216600F15A36 /* AsteroidEntity+CoreDataProperties.swift in Sources */,
+				A5840CF42818216600F15A36 /* AsteroidEntity+CoreDataClass.swift in Sources */,
 				A523BBAF2814522700E0BCA7 /* Asteroid.swift in Sources */,
 				A523BBAD2814437800E0BCA7 /* Armageddon2022.xcdatamodeld in Sources */,
+				A52DE7532817C1190008A969 /* UILabel+Extensions.swift in Sources */,
 				A5C2E65728133366008869AB /* AsteroidsViewController.swift in Sources */,
 				A5C2E65328133366008869AB /* AppDelegate.swift in Sources */,
-				A59CCF8C281588910003DB29 /* AsteroidEntity+CoreDataClass.swift in Sources */,
+				A52DE7502817BCF50008A969 /* FilterViewController.swift in Sources */,
+				A5840CE6281805C800F15A36 /* AsteroidsView.swift in Sources */,
 				A5C2E65528133366008869AB /* SceneDelegate.swift in Sources */,
 				A523BBB1281458F400E0BCA7 /* DataService.swift in Sources */,
-				A59CCF8D281588910003DB29 /* AsteroidEntity+CoreDataProperties.swift in Sources */,
 				A5AA24752816C6A600353AA1 /* AsteroidsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

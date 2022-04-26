@@ -9,7 +9,7 @@ import Foundation
 
 struct Asteroid {
     let name, id, date: String?
-    let diameterMax, diameterMin, missDistance: Double
+    let diameterMax, diameterMin, missDistanceKilometers, missDistanceLunar: Double
     let isPotentiallyHazardousAsteroid: Bool
 }
 

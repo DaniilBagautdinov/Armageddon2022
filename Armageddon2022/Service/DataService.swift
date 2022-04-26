@@ -44,7 +44,8 @@ final class DataService {
         asteroidEntity.id = asteroid.id
         asteroidEntity.diameterMax = asteroid.diameterMax
         asteroidEntity.diameterMin = asteroid.diameterMin
-        asteroidEntity.missDistance = asteroid.missDistance
+        asteroidEntity.missDistanceKilometers = asteroid.missDistanceKilometers
+        asteroidEntity.missDistanceLunar = asteroid.missDistanceLunar
         asteroidEntity.isPotentiallyHazardousAsteroid = asteroid.isPotentiallyHazardousAsteroid
         asteroidEntity.date = asteroid.date
         
@@ -57,7 +58,23 @@ final class DataService {
         do {
             let asteroidsEntity = try viewContext.fetch(fetchRequest)
             for asteroidEntity in asteroidsEntity {
-                asteroids.append(Asteroid(name: asteroidEntity.name, id: asteroidEntity.id, date: asteroidEntity.date, diameterMax: asteroidEntity.diameterMax, diameterMin: asteroidEntity.diameterMin, missDistance: asteroidEntity.missDistance, isPotentiallyHazardousAsteroid: asteroidEntity.isPotentiallyHazardousAsteroid))
+                asteroids.append(Asteroid(name: asteroidEntity.name, id: asteroidEntity.id, date: asteroidEntity.date, diameterMax: asteroidEntity.diameterMax, diameterMin: asteroidEntity.diameterMin, missDistanceKilometers: asteroidEntity.missDistanceKilometers, missDistanceLunar: asteroidEntity.missDistanceLunar, isPotentiallyHazardousAsteroid: asteroidEntity.isPotentiallyHazardousAsteroid))
+            }
+        } catch {
+            print(error)
+        }
+        return asteroids
+    }
+    
+    func getAllDangerousAsteroids() -> [Asteroid] {
+        let fetchRequest = AsteroidEntity.fetchRequest()
+        var asteroids: [Asteroid] = []
+        do {
+            let asteroidsEntity = try viewContext.fetch(fetchRequest)
+            for asteroidEntity in asteroidsEntity {
+                if asteroidEntity.isPotentiallyHazardousAsteroid {
+                    asteroids.append(Asteroid(name: asteroidEntity.name, id: asteroidEntity.id, date: asteroidEntity.date, diameterMax: asteroidEntity.diameterMax, diameterMin: asteroidEntity.diameterMin, missDistanceKilometers: asteroidEntity.missDistanceKilometers, missDistanceLunar: asteroidEntity.missDistanceLunar, isPotentiallyHazardousAsteroid: asteroidEntity.isPotentiallyHazardousAsteroid))
+                }
             }
         } catch {
             print(error)
@@ -88,7 +105,7 @@ final class DataService {
                         let json = JSON(value!)
                         for date in dates {
                             for asteroid in json["near_earth_objects"][date] {
-                                self.addAsteroidEntity(asteroid: Asteroid(name: asteroid.1["name"].stringValue, id: asteroid.1["id"].stringValue, date: date, diameterMax: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_max"].doubleValue, diameterMin: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_min"].doubleValue, missDistance: asteroid.1["close_approach_data"][0]["miss_distance"]["kilometers"].doubleValue, isPotentiallyHazardousAsteroid: asteroid.1["is_potentially_hazardous_asteroid"].boolValue))
+                                self.addAsteroidEntity(asteroid: Asteroid(name: asteroid.1["name"].stringValue, id: asteroid.1["id"].stringValue, date: date, diameterMax: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_max"].doubleValue, diameterMin: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_min"].doubleValue, missDistanceKilometers: asteroid.1["close_approach_data"][0]["miss_distance"]["kilometers"].doubleValue, missDistanceLunar: asteroid.1["close_approach_data"][0]["miss_distance"]["lunar"].doubleValue, isPotentiallyHazardousAsteroid: asteroid.1["is_potentially_hazardous_asteroid"].boolValue))
                                 
                             }
                         }
@@ -103,7 +120,7 @@ final class DataService {
         
     }
     
-    func generateDates(date: Date) -> [String] {
+    private func generateDates(date: Date) -> [String] {
         var result: [String] = []
         var date = date
         let calendar = Calendar.current

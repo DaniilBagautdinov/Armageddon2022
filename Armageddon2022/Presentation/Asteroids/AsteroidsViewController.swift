@@ -9,9 +9,11 @@ import UIKit
 
 class AsteroidsViewController: UIViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    var asteroids: [Asteroid] = DataService.shared.getAllAsteroids()
+    var asteroidsNow: [Asteroid]?
+    var allAsteroids: [Asteroid] = DataService.shared.getAllAsteroids()
+    var dangerousAsteroids: [Asteroid] = DataService.shared.getAllDangerousAsteroids()
+    var distanceInKilometers: Bool?
+    var isDangerousAsteroids: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,16 +21,22 @@ class AsteroidsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        guard let asteroidsView = view as? AsteroidsView else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
-            if asteroids.count == 0 {
-                asteroids = DataService.shared.getAllAsteroids()
-                collectionView.reloadData()
+            if allAsteroids.count == 0 {
+                allAsteroids = DataService.shared.getAllAsteroids()
+                asteroidsNow = allAsteroids
+                asteroidsView.collectionView.reloadData()
             }
         }
     }
     
     @IBAction func filterButton(_ sender: Any) {
-        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
+        vc.distanceInKilometers = distanceInKilometers
+        vc.isDangerousAsteroids = isDangerousAsteroids
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func configureView() {
@@ -41,20 +49,29 @@ class AsteroidsViewController: UIViewController {
                 DataService.shared.getData(date: Date())
             }
         }
-        collectionView.delegate = self
-        collectionView.dataSource = self
         
+        guard let asteroidsView = view as? AsteroidsView else { return }
+        asteroidsView.collectionView.delegate = self
+        asteroidsView.collectionView.dataSource = self
+        distanceInKilometers = true
+        isDangerousAsteroids = false
+        asteroidsNow = allAsteroids
     }
 }
 
 extension AsteroidsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return asteroids.count
+        if let asteroidsNow = asteroidsNow {
+            return asteroidsNow.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AsteroidsCollectionViewCell", for: indexPath) as? AsteroidsCollectionViewCell else { return UICollectionViewCell()}
-        cell.setData(asteroid: asteroids[indexPath.row])
+        if let asteroidsNow = asteroidsNow {
+            cell.setData(asteroid: asteroidsNow[indexPath.row], distanceInKilometers: distanceInKilometers ?? true)
+        }
         return cell
     }
 }
@@ -64,8 +81,19 @@ extension AsteroidsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width - 48, height: 330)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+}
+
+extension AsteroidsViewController: FilterViewControllerDelegate {
+    func setFilter(distanceInKilometers: Bool, isDangerousAsteroids: Bool) {
+        self.distanceInKilometers = distanceInKilometers
+        self.isDangerousAsteroids = isDangerousAsteroids
+        
+        guard let asteroidsView = view as? AsteroidsView else { return }
+        if isDangerousAsteroids {
+            asteroidsNow = dangerousAsteroids
+        } else {
+            asteroidsNow = allAsteroids
+        }
+        asteroidsView.collectionView.reloadData()
     }
 }

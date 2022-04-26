@@ -19,18 +19,26 @@ class AsteroidsCollectionViewCell: UICollectionViewCell {
     @IBAction func destroyButton(_ sender: Any) {
     }
     
-    func setData(asteroid: Asteroid) {
+    func setData(asteroid: Asteroid, distanceInKilometers: Bool) {
         configureViewCell()
         asteroidImageView.image = setImage(asteroid: asteroid)
         asteroidNameLabel.text = setName(asteroid: asteroid)
         asteroidDiameterLabel.text = "Диаметр: \(Int((asteroid.diameterMax + asteroid.diameterMin)/2)) м"
         asteroidDateLabel.text = setDate(asteroid: asteroid)
-        asteroidDistanceLabel.text = "на расстояние \(Int(asteroid.missDistance).description) км"
+        if distanceInKilometers {
+            asteroidDistanceLabel.text = "на расстояние \(Int(asteroid.missDistanceKilometers).description) км"
+        } else {
+            asteroidDistanceLabel.text = "на расстояние \(Int(asteroid.missDistanceLunar).description) л. орб."
+        }
         if asteroid.isPotentiallyHazardousAsteroid {
             asteroidEstimationLabel.text = "Оценка: опасен"
         } else {
             asteroidEstimationLabel.text = "Оценка: не опасен"
         }
+        asteroidDiameterLabel.setFont()
+        asteroidDateLabel.setFont()
+        asteroidDistanceLabel.setFont()
+        asteroidEstimationLabel.setFont()
     }
     
     private func configureViewCell() {
