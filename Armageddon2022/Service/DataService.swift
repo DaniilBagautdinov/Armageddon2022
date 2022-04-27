@@ -14,7 +14,7 @@ final class DataService {
     
     static let shared = DataService()
     
-    let key = "IQh2wd2JtJHXoUijtmbcuP1AphUOsmTkUgiE4b7O"
+    let key = "Fz2hR1x29iwvxcwEaMnQbkZXQQZnviNsMMRQMUSY"
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Armageddon2022")
@@ -39,18 +39,49 @@ final class DataService {
     }
     
     func addAsteroidEntity(asteroid: Asteroid) {
-        let asteroidEntity = AsteroidEntity(context: viewContext)
-        asteroidEntity.name = asteroid.name
-        asteroidEntity.id = asteroid.id
-        asteroidEntity.diameterMax = asteroid.diameterMax
-        asteroidEntity.diameterMin = asteroid.diameterMin
-        asteroidEntity.missDistanceKilometers = asteroid.missDistanceKilometers
-        asteroidEntity.missDistanceLunar = asteroid.missDistanceLunar
-        asteroidEntity.isPotentiallyHazardousAsteroid = asteroid.isPotentiallyHazardousAsteroid
-        asteroidEntity.date = asteroid.date
-        asteroidEntity.isDestroy = false
-        
-        saveContext()
+        let fetchRequest = AsteroidEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", asteroid.id!)
+        do {
+            let asteroidsEntity = try viewContext.fetch(fetchRequest)
+            if asteroidsEntity.isEmpty {
+                let asteroidEntity = AsteroidEntity(context: viewContext)
+                asteroidEntity.name = asteroid.name
+                asteroidEntity.id = asteroid.id
+                asteroidEntity.diameterMax = asteroid.diameterMax
+                asteroidEntity.diameterMin = asteroid.diameterMin
+                asteroidEntity.missDistanceKilometers = asteroid.missDistanceKilometers
+                asteroidEntity.missDistanceLunar = asteroid.missDistanceLunar
+                asteroidEntity.isPotentiallyHazardousAsteroid = asteroid.isPotentiallyHazardousAsteroid
+                asteroidEntity.date = asteroid.date
+                asteroidEntity.isDestroy = false
+                
+                saveContext()
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func addCloseApproachDataEntity(closeApproachData: CloseApprouchData) {
+        let fetchRequest = CloseApproachDataEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "closeApprouchDateFull == %@", closeApproachData.closeApprouchDateFull!)
+        do {
+            let fullInfo = try viewContext.fetch(fetchRequest)
+            if fullInfo.isEmpty {
+                let closeApproachDataEntity = CloseApproachDataEntity(context: viewContext)
+                closeApproachDataEntity.asteroidId = closeApproachData.asteroidId
+                closeApproachDataEntity.missDistanceLunar = closeApproachData.missDistanceLunar
+                closeApproachDataEntity.missDistanceKilometers = closeApproachData.missDistanceKilometers
+                closeApproachDataEntity.closeApprouchDate = closeApproachData.closeApprouchDate
+                closeApproachDataEntity.closeApprouchDateFull = closeApproachData.closeApprouchDateFull
+                closeApproachDataEntity.kilometersPerSecond = closeApproachData.kilometersPerSecond
+                closeApproachDataEntity.orbitingBody = closeApproachData.orbitingBody
+                
+                saveContext()
+            }
+        } catch {
+            print(error)
+        }
     }
     
     func getAllAsteroids() -> [Asteroid] {
@@ -91,7 +122,7 @@ final class DataService {
         do {
             let asteroidsEntity = try viewContext.fetch(fetchRequest)
             for asteroidEntity in asteroidsEntity {
-                if asteroidEntity.isDestroy {
+                if asteroidEntity.isDestroy{
                     asteroids.append(Asteroid(name: asteroidEntity.name, id: asteroidEntity.id, date: asteroidEntity.date, diameterMax: asteroidEntity.diameterMax, diameterMin: asteroidEntity.diameterMin, missDistanceKilometers: asteroidEntity.missDistanceKilometers, missDistanceLunar: asteroidEntity.missDistanceLunar, isPotentiallyHazardousAsteroid: asteroidEntity.isPotentiallyHazardousAsteroid))
                 }
             }
@@ -105,7 +136,7 @@ final class DataService {
         let fetchRequest = AsteroidEntity.fetchRequest()
         do {
             let asteroidsEntity = try viewContext.fetch(fetchRequest)
-            return asteroidsEntity.last
+            return asteroidsEntity.sorted(by: {$0.date ?? "" < $1.date ?? ""}).last
         } catch {
             print(error)
         }
@@ -125,31 +156,57 @@ final class DataService {
         }
     }
     
+    func clearDestroyAsteroids() {
+        let fetchRequest = AsteroidEntity.fetchRequest()
+        do {
+            let asteroidsEntity = try viewContext.fetch(fetchRequest)
+            for asteroidEntity in asteroidsEntity {
+                if asteroidEntity.isDestroy {
+                    viewContext.delete(asteroidEntity)
+                    saveContext()
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     func getData(date: Date) {
-        let operationQueue = OperationQueue()
-        operationQueue.addOperation { [self] in
+        DispatchQueue.main.async { [self] in
             let dates = generateDates(date: date)
             guard let url = URL(string: "https://api.nasa.gov/neo/rest/v1/feed?start_date=\(dates[0])&api_key=\(key)") else { return }
             AF.request(url).response { response in
                 switch response.result {
                 case .success(let value):
-                    DispatchQueue.main.async { [self] in
-                        let json = JSON(value!)
-                        for date in dates {
-                            for asteroid in json["near_earth_objects"][date] {
-                                self.addAsteroidEntity(asteroid: Asteroid(name: asteroid.1["name"].stringValue, id: asteroid.1["id"].stringValue, date: date, diameterMax: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_max"].doubleValue, diameterMin: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_min"].doubleValue, missDistanceKilometers: asteroid.1["close_approach_data"][0]["miss_distance"]["kilometers"].doubleValue, missDistanceLunar: asteroid.1["close_approach_data"][0]["miss_distance"]["lunar"].doubleValue, isPotentiallyHazardousAsteroid: asteroid.1["is_potentially_hazardous_asteroid"].boolValue))
-                                
-                            }
+                    let json = JSON(value!)
+                    for date in dates {
+                        for asteroid in json["near_earth_objects"][date] {
+                            self.addAsteroidEntity(asteroid: Asteroid(name: asteroid.1["name"].stringValue, id: asteroid.1["id"].stringValue, date: date, diameterMax: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_max"].doubleValue, diameterMin: asteroid.1["estimated_diameter"]["meters"]["estimated_diameter_min"].doubleValue, missDistanceKilometers: asteroid.1["close_approach_data"][0]["miss_distance"]["kilometers"].doubleValue, missDistanceLunar: asteroid.1["close_approach_data"][0]["miss_distance"]["lunar"].doubleValue, isPotentiallyHazardousAsteroid: asteroid.1["is_potentially_hazardous_asteroid"].boolValue))
                         }
-                        print("DONE")
                     }
+                    print("DONE")
                     //                    print("JSON: \(json)")
                 case .failure(let error):
                     print(error)
                 }
             }
         }
-        
+    }
+    
+    func getAsteroidInfo(id: String) {
+        DispatchQueue.main.async { [self] in
+            AF.request("https://api.nasa.gov/neo/rest/v1/neo/\(id)?api_key=\(key)").response { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value!)
+                    for asteroidInfo in json["close_approach_data"] {
+                        self.addCloseApproachDataEntity(closeApproachData: CloseApprouchData(asteroidId: id, closeApprouchDate: asteroidInfo.1["close_approach_date"].stringValue, closeApprouchDateFull: asteroidInfo.1["close_approach_date_full"].stringValue, orbitingBody: asteroidInfo.1["orbiting_body"].stringValue, kilometersPerSecond: asteroidInfo.1["relative_velocity"]["kilometers_per_second"].doubleValue, missDistanceKilometers: asteroidInfo.1["miss_distance"]["kilometers"].doubleValue, missDistanceLunar: asteroidInfo.1["miss_distance"]["lunar"].doubleValue))
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
     
     private func generateDates(date: Date) -> [String] {
@@ -183,3 +240,4 @@ final class DataService {
         return result
     }
 }
+

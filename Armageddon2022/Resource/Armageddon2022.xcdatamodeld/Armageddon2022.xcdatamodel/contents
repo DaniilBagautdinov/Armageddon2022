@@ -11,7 +11,17 @@
         <attribute name="missDistanceLunar" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="CloseApproachDataEntity" representedClassName="CloseApproachDataEntity" syncable="YES">
+        <attribute name="asteroidId" optional="YES" attributeType="String"/>
+        <attribute name="closeApprouchDate" optional="YES" attributeType="String"/>
+        <attribute name="closeApprouchDateFull" optional="YES" attributeType="String"/>
+        <attribute name="kilometersPerSecond" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="missDistanceKilometers" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="missDistanceLunar" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="orbitingBody" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="AsteroidEntity" positionX="48.08203125" positionY="-183.46875" width="128" height="164"/>
+        <element name="CloseApproachDataEntity" positionX="45" positionY="-117" width="128" height="14"/>
     </elements>
 </model>

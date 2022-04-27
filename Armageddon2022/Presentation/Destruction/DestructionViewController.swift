@@ -10,7 +10,7 @@ import UIKit
 class DestructionViewController: UIViewController {
     
     var allDestroyAsteroids: [Asteroid] = DataService.shared.getAllDestroyAsteroids()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -21,6 +21,23 @@ class DestructionViewController: UIViewController {
         guard let destructionView = view as? DestructionView else { return }
         allDestroyAsteroids = DataService.shared.getAllDestroyAsteroids()
         destructionView.collectionView.reloadData()
+    }
+    
+    
+    @IBAction func clearButton(_ sender: Any) {
+        if allDestroyAsteroids.count > 0 {
+            let alertController = UIAlertController(title: "Уничтожить астероиды", message: "Уничтоженные астероиды нельзя будет восстановить" , preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Уничтожить", style: .destructive, handler: { [self] _ in
+                DataService.shared.clearDestroyAsteroids()
+                guard let destructionView = view as? DestructionView else { return }
+                allDestroyAsteroids = DataService.shared.getAllDestroyAsteroids()
+                destructionView.collectionView.reloadData()
+            }))
+            alertController.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: {_ in
+                alertController.dismiss(animated: true)
+            }))
+            present (alertController, animated: true)
+        }
     }
     
     private func configureView() {

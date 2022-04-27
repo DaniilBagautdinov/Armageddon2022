@@ -14,6 +14,7 @@ class AsteroidsViewController: UIViewController {
     var dangerousAsteroids: [Asteroid] = DataService.shared.getAllDangerousAsteroids()
     var distanceInKilometers: Bool?
     var isDangerousAsteroids: Bool?
+    var scrollOn: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class AsteroidsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         guard let asteroidsView = view as? AsteroidsView else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [self] in
             if allAsteroids.count == 0 {
                 allAsteroids = DataService.shared.getAllAsteroids()
                 dangerousAsteroids = DataService.shared.getAllDangerousAsteroids()
@@ -39,16 +40,11 @@ class AsteroidsViewController: UIViewController {
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
-        
+    
     private func configureView() {
         let lastAsteroidEntity = DataService.shared.getLastAsteroid()
         if lastAsteroidEntity == nil {
             DataService.shared.getData(date: Date())
-        } else {
-            let dates = lastAsteroidEntity?.date?.split(separator: "-")
-            if dates?[2] ?? "" != Calendar.current.component(.day, from: Date()+604800).description {
-                DataService.shared.getData(date: Date())
-            }
         }
         
         guard let asteroidsView = view as? AsteroidsView else { return }
@@ -75,6 +71,47 @@ extension AsteroidsViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.delegate = self
         }
         return cell
+    }
+    
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentSize.height > 0 && scrollOn {
+            let height = scrollView.frame.size.height
+            let contentYoffset = scrollView.contentOffset.y
+            var distanceFromBottom: CGFloat
+            guard let isDangerousAsteroids = isDangerousAsteroids else { return }
+            if isDangerousAsteroids {
+                distanceFromBottom = scrollView.contentSize.height - contentYoffset - 5000
+            } else {
+                distanceFromBottom = scrollView.contentSize.height - contentYoffset - 20000
+            }
+            
+            if distanceFromBottom < height && scrollOn{
+                scrollOn = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [self] in
+                    scrollOn = true
+                }
+                let strDate = DataService.shared.getLastAsteroid()?.date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy'-'MM'-'dd"
+                let date = dateFormatter.date(from: strDate ?? "")
+                if let date = date {
+                    guard let asteroidsView = view as? AsteroidsView else { return }
+                    DataService.shared.getData(date: date + 86400)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [self] in
+                        allAsteroids = DataService.shared.getAllAsteroids()
+                        dangerousAsteroids = DataService.shared.getAllDangerousAsteroids()
+                        if isDangerousAsteroids {
+                            asteroidsNow = dangerousAsteroids
+                        } else {
+                            asteroidsNow = allAsteroids
+                        }
+                        asteroidsView.collectionView.reloadData()
+                    }
+                }
+            }
+        }
     }
 }
 
