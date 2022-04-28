@@ -29,7 +29,7 @@
         <!--Astreoid View Controller-->
         <scene sceneID="9yc-mS-Chz">
             <objects>
-                <viewController title="adsas" id="yeE-hh-lOx" userLabel="Astreoid View Controller" customClass="AsteroidsViewController" customModule="Armageddon2022" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yeE-hh-lOx" userLabel="Astreoid View Controller" customClass="AsteroidsViewController" customModule="Armageddon2022" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JXW-HH-1x3" customClass="AsteroidsView" customModule="Armageddon2022" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,7 +92,7 @@
                                                     <rect key="frame" x="235" y="283" width="145" height="36"/>
                                                     <color key="backgroundColor" systemColor="linkColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="145" id="sUT-CV-PtS"/>
+                                                        <constraint firstAttribute="width" priority="500" constant="145" id="sUT-CV-PtS"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="уничтожить">
@@ -157,7 +157,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Астероиды" image="globe" catalog="system" id="JYW-Fx-n1X"/>
                     <navigationItem key="navigationItem" title="Армагеддон 2022" id="rrc-ih-sy5">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="LBD-O0-Aec">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="LBD-O0-Aec">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Zn6-rt-hF8">
                                 <rect key="frame" x="357" y="5" width="51" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -197,7 +197,7 @@
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TH3-yI-EVw">
                                                 <rect key="frame" x="260" y="7" width="131" height="31"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="131" id="1n4-V9-4B5"/>
+                                                    <constraint firstAttribute="width" priority="500" constant="131" id="1n4-V9-4B5"/>
                                                 </constraints>
                                                 <segments>
                                                     <segment title="км"/>
@@ -294,7 +294,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Фильтр" id="hVA-f1-Wzt">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="MdH-JN-UzV">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="MdH-JN-UzV">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="MSk-LP-nSt">
                                 <rect key="frame" x="287" y="4.6666666666666679" width="121" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -312,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8wq-hA-t9D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1742.5233644859811" y="-500.21598272138232"/>
+            <point key="canvasLocation" x="962" y="-1142"/>
         </scene>
         <!--Item-->
         <scene sceneID="gn7-gE-V6Y">
@@ -396,7 +396,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Уничтожение" image="trash" catalog="system" id="tWd-Qd-gE5"/>
                     <navigationItem key="navigationItem" title="Уничтожение астероидов" id="ZyJ-B4-qmj">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="y4W-YT-6DS">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="y4W-YT-6DS">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="vq3-48-c6Q">
                                 <rect key="frame" x="359.66666666666669" y="5" width="48.333333333333314" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -433,6 +433,163 @@
             </objects>
             <point key="canvasLocation" x="-775" y="-119"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="xY7-8g-fBX">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="rXx-D0-OGr" userLabel="Detail View Controller" customClass="DetailViewController" customModule="Armageddon2022" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="66i-6m-Pac" customClass="DetailView" customModule="Armageddon2022" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Bee-d3-Sdc">
+                                <rect key="frame" x="0.0" y="88" width="428" height="755"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="7Cx-Wq-pgU">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="125"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Диаметр:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wb-kI-j3n">
+                                            <rect key="frame" x="16" y="8" width="396" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="wlv-DM-a1K"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подлетает" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roo-78-g9F">
+                                            <rect key="frame" x="16" y="39" width="396" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="m9U-pT-SSC"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="на расстояние" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1k-ih-uvx">
+                                            <rect key="frame" x="16" y="70" width="396" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="F1D-jV-z6o"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оценка:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tk5-bP-Xjb">
+                                            <rect key="frame" x="16" y="101" width="396" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="iu5-zT-6KR"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="tk5-bP-Xjb" secondAttribute="bottom" constant="8" id="0AM-ge-gg8"/>
+                                        <constraint firstItem="1Wb-kI-j3n" firstAttribute="top" secondItem="7Cx-Wq-pgU" secondAttribute="top" constant="8" id="3iB-gb-GwT"/>
+                                        <constraint firstItem="B1k-ih-uvx" firstAttribute="top" secondItem="roo-78-g9F" secondAttribute="bottom" constant="8" id="EOL-X0-PEU"/>
+                                        <constraint firstAttribute="trailing" secondItem="B1k-ih-uvx" secondAttribute="trailing" constant="16" id="J8B-YJ-Per"/>
+                                        <constraint firstAttribute="trailing" secondItem="roo-78-g9F" secondAttribute="trailing" constant="16" id="QDj-l1-lLH"/>
+                                        <constraint firstAttribute="trailing" secondItem="1Wb-kI-j3n" secondAttribute="trailing" constant="16" id="Ydh-w6-MoI"/>
+                                        <constraint firstItem="roo-78-g9F" firstAttribute="top" secondItem="1Wb-kI-j3n" secondAttribute="bottom" constant="8" id="ZdS-FM-z1f"/>
+                                        <constraint firstItem="B1k-ih-uvx" firstAttribute="leading" secondItem="7Cx-Wq-pgU" secondAttribute="leading" constant="16" id="d6g-Ma-cqT"/>
+                                        <constraint firstItem="1Wb-kI-j3n" firstAttribute="leading" secondItem="7Cx-Wq-pgU" secondAttribute="leading" constant="16" id="grI-PL-UjF"/>
+                                        <constraint firstItem="tk5-bP-Xjb" firstAttribute="top" secondItem="B1k-ih-uvx" secondAttribute="bottom" constant="8" id="i2J-2Z-Bdp"/>
+                                        <constraint firstItem="roo-78-g9F" firstAttribute="leading" secondItem="7Cx-Wq-pgU" secondAttribute="leading" constant="16" id="nEU-Yf-FRM"/>
+                                        <constraint firstAttribute="trailing" secondItem="tk5-bP-Xjb" secondAttribute="trailing" constant="16" id="sF1-gy-Xl5"/>
+                                        <constraint firstItem="tk5-bP-Xjb" firstAttribute="leading" secondItem="7Cx-Wq-pgU" secondAttribute="leading" constant="16" id="yFn-o7-gw2"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailTableViewCell" rowHeight="170" id="OwN-GI-AsE" customClass="DetailTableViewCell" customModule="Armageddon2022" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="169.66666603088379" width="428" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OwN-GI-AsE" id="NKm-mT-JqZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Пролетал мимо Земли: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbB-E6-7gr">
+                                                    <rect key="frame" x="20" y="19" width="388" height="23"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Летит по орбите вокруг: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRX-p1-7Vw">
+                                                    <rect key="frame" x="20" y="50" width="388" height="39"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Скорость относительно Земли: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yo-ii-lpV">
+                                                    <rect key="frame" x="20" y="97" width="388" height="23"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Расстояние до Земли: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-Pm-klG">
+                                                    <rect key="frame" x="20" y="128" width="388" height="23"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6yo-ii-lpV" firstAttribute="leading" secondItem="NKm-mT-JqZ" secondAttribute="leadingMargin" id="004-td-Qoq"/>
+                                                <constraint firstItem="bbB-E6-7gr" firstAttribute="top" secondItem="NKm-mT-JqZ" secondAttribute="topMargin" constant="8" id="4Q5-bc-Lkb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kl1-Pm-klG" secondAttribute="trailing" id="6Iw-Kp-3og"/>
+                                                <constraint firstItem="oRX-p1-7Vw" firstAttribute="top" secondItem="bbB-E6-7gr" secondAttribute="bottom" constant="8" id="9zE-4N-fTE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6yo-ii-lpV" secondAttribute="trailing" id="KZy-Nr-dhZ"/>
+                                                <constraint firstItem="kl1-Pm-klG" firstAttribute="top" secondItem="6yo-ii-lpV" secondAttribute="bottom" constant="8" id="XF1-td-FCu"/>
+                                                <constraint firstItem="kl1-Pm-klG" firstAttribute="leading" secondItem="NKm-mT-JqZ" secondAttribute="leadingMargin" id="ZVO-BH-S6y"/>
+                                                <constraint firstItem="oRX-p1-7Vw" firstAttribute="leading" secondItem="NKm-mT-JqZ" secondAttribute="leadingMargin" id="fGF-GY-myn"/>
+                                                <constraint firstItem="bbB-E6-7gr" firstAttribute="leading" secondItem="NKm-mT-JqZ" secondAttribute="leadingMargin" id="hoy-fp-xU6"/>
+                                                <constraint firstItem="6yo-ii-lpV" firstAttribute="top" secondItem="oRX-p1-7Vw" secondAttribute="bottom" constant="8" id="sRk-f9-duh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bbB-E6-7gr" secondAttribute="trailing" id="tx7-bl-9I1"/>
+                                                <constraint firstItem="oRX-p1-7Vw" firstAttribute="trailing" secondItem="NKm-mT-JqZ" secondAttribute="trailingMargin" id="uFs-YK-MWp"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="kl1-Pm-klG" secondAttribute="bottom" constant="8" id="v4s-AL-oNN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="bbB-E6-7gr" id="mtB-bG-voB"/>
+                                            <outlet property="distanceLabel" destination="kl1-Pm-klG" id="5Xg-3U-X8Z"/>
+                                            <outlet property="orbitingBodyLabel" destination="oRX-p1-7Vw" id="SaK-S4-yyQ"/>
+                                            <outlet property="relativeVelocityLabel" destination="6yo-ii-lpV" id="NTb-my-Zbv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zZY-yF-iQi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zZY-yF-iQi" firstAttribute="trailing" secondItem="Bee-d3-Sdc" secondAttribute="trailing" id="56u-vT-tlp"/>
+                            <constraint firstItem="zZY-yF-iQi" firstAttribute="bottom" secondItem="Bee-d3-Sdc" secondAttribute="bottom" id="Cm2-Xh-r5k"/>
+                            <constraint firstItem="Bee-d3-Sdc" firstAttribute="leading" secondItem="zZY-yF-iQi" secondAttribute="leading" id="vtt-c0-Rbs"/>
+                            <constraint firstItem="Bee-d3-Sdc" firstAttribute="top" secondItem="zZY-yF-iQi" secondAttribute="top" id="wDQ-DU-Cbd"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="dateLabel" destination="roo-78-g9F" id="3BM-Ng-mc3"/>
+                            <outlet property="diameterLabel" destination="1Wb-kI-j3n" id="c1J-Cu-gfG"/>
+                            <outlet property="distanceLabel" destination="B1k-ih-uvx" id="ut9-Mg-3KR"/>
+                            <outlet property="estimationLabel" destination="tk5-bP-Xjb" id="smL-sx-gfi"/>
+                            <outlet property="tableView" destination="Bee-d3-Sdc" id="nhc-yi-trX"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Name" id="tGz-J5-TYa"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LhB-b5-S67" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1792.9906542056074" y="-500.21598272138232"/>
+        </scene>
     </scenes>
     <resources>
         <image name="asteroid 1" width="680" height="290"/>
@@ -445,6 +602,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

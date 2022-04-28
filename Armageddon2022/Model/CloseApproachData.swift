@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CloseApprouchData {
+struct CloseApproachData {
     let asteroidId, closeApprouchDate, closeApprouchDateFull, orbitingBody: String?
     let kilometersPerSecond, missDistanceKilometers, missDistanceLunar: Double
 }

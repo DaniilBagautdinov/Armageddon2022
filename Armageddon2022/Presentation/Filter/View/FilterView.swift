@@ -8,7 +8,7 @@
 import UIKit
 
 class FilterView: UIView {
-
+    ///Outlets
     @IBOutlet weak var dangerousSwitch: UISwitch!
     @IBOutlet weak var distanceSegmentedControl: UISegmentedControl!
 }

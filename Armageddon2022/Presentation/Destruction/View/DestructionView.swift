@@ -8,5 +8,6 @@
 import UIKit
 
 class DestructionView: UIView {
+    ///Outlets
     @IBOutlet weak var collectionView: UICollectionView!
 }

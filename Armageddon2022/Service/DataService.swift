@@ -11,10 +11,11 @@ import SwiftyJSON
 import CoreData
 
 final class DataService {
-    
+    ///Properties
     static let shared = DataService()
-    
     let key = "Fz2hR1x29iwvxcwEaMnQbkZXQQZnviNsMMRQMUSY"
+    
+    // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Armageddon2022")
@@ -27,6 +28,8 @@ final class DataService {
     }()
     lazy var viewContext = persistentContainer.viewContext
     
+    // MARK: - Core Data Saving support
+    
     func saveContext() {
         if viewContext.hasChanges {
             do {
@@ -37,6 +40,8 @@ final class DataService {
             }
         }
     }
+    
+    // MARK: - Core Data add new entity
     
     func addAsteroidEntity(asteroid: Asteroid) {
         let fetchRequest = AsteroidEntity.fetchRequest()
@@ -62,7 +67,7 @@ final class DataService {
         }
     }
     
-    func addCloseApproachDataEntity(closeApproachData: CloseApprouchData) {
+    func addCloseApproachDataEntity(closeApproachData: CloseApproachData) {
         let fetchRequest = CloseApproachDataEntity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "closeApprouchDateFull == %@", closeApproachData.closeApprouchDateFull!)
         do {
@@ -82,6 +87,27 @@ final class DataService {
         } catch {
             print(error)
         }
+    }
+    
+    // MARK: - Core Data get entity
+    
+    func getCloseApproachData(id: String) -> [CloseApproachData] {
+        let fetchRequest = CloseApproachDataEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "asteroidId == %@", id)
+        var closeApproachData: [CloseApproachData] = []
+        do {
+            let closeApproachDataEntity = try viewContext.fetch(fetchRequest)
+            if closeApproachDataEntity.isEmpty {
+                getAsteroidInfo(id: id)
+            } else {
+                for closeApproachDatum in closeApproachDataEntity {
+                    closeApproachData.append(CloseApproachData(asteroidId: closeApproachDatum.asteroidId, closeApprouchDate: closeApproachDatum.closeApprouchDate, closeApprouchDateFull: closeApproachDatum.closeApprouchDateFull, orbitingBody: closeApproachDatum.orbitingBody, kilometersPerSecond: closeApproachDatum.kilometersPerSecond, missDistanceKilometers: closeApproachDatum.missDistanceKilometers, missDistanceLunar: closeApproachDatum.missDistanceLunar))
+                }
+            }
+        } catch {
+            print(error)
+        }
+        return closeApproachData
     }
     
     func getAllAsteroids() -> [Asteroid] {
@@ -143,6 +169,8 @@ final class DataService {
         return nil
     }
     
+    // MARK: - Core Data setEntity
+    
     func setAsteroidDestroy(id: String) {
         let fetchRequest = AsteroidEntity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
@@ -156,6 +184,8 @@ final class DataService {
         }
     }
     
+    // MARK: - Core Data remove entity
+    
     func clearDestroyAsteroids() {
         let fetchRequest = AsteroidEntity.fetchRequest()
         do {
@@ -163,6 +193,7 @@ final class DataService {
             for asteroidEntity in asteroidsEntity {
                 if asteroidEntity.isDestroy {
                     viewContext.delete(asteroidEntity)
+                    removeCloseApproachData(id: asteroidEntity.id ?? "")
                     saveContext()
                 }
             }
@@ -170,6 +201,21 @@ final class DataService {
             print(error)
         }
     }
+    
+    func removeCloseApproachData(id: String) {
+        let fetchRequest = CloseApproachDataEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "asteroidId == %@", id)
+        do {
+            let closeApproachDataEntity = try viewContext.fetch(fetchRequest)
+            for closeApproachDatumEntity in closeApproachDataEntity {
+                viewContext.delete(closeApproachDatumEntity)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    // MARK: - Network Service
     
     func getData(date: Date) {
         DispatchQueue.main.async { [self] in
@@ -200,7 +246,7 @@ final class DataService {
                 case .success(let value):
                     let json = JSON(value!)
                     for asteroidInfo in json["close_approach_data"] {
-                        self.addCloseApproachDataEntity(closeApproachData: CloseApprouchData(asteroidId: id, closeApprouchDate: asteroidInfo.1["close_approach_date"].stringValue, closeApprouchDateFull: asteroidInfo.1["close_approach_date_full"].stringValue, orbitingBody: asteroidInfo.1["orbiting_body"].stringValue, kilometersPerSecond: asteroidInfo.1["relative_velocity"]["kilometers_per_second"].doubleValue, missDistanceKilometers: asteroidInfo.1["miss_distance"]["kilometers"].doubleValue, missDistanceLunar: asteroidInfo.1["miss_distance"]["lunar"].doubleValue))
+                        self.addCloseApproachDataEntity(closeApproachData: CloseApproachData(asteroidId: id, closeApprouchDate: asteroidInfo.1["close_approach_date"].stringValue, closeApprouchDateFull: asteroidInfo.1["close_approach_date_full"].stringValue, orbitingBody: asteroidInfo.1["orbiting_body"].stringValue, kilometersPerSecond: asteroidInfo.1["relative_velocity"]["kilometers_per_second"].doubleValue, missDistanceKilometers: asteroidInfo.1["miss_distance"]["kilometers"].doubleValue, missDistanceLunar: asteroidInfo.1["miss_distance"]["lunar"].doubleValue))
                     }
                 case .failure(let error):
                     print(error)
@@ -208,6 +254,8 @@ final class DataService {
             }
         }
     }
+    
+    // MARK: - Private function
     
     private func generateDates(date: Date) -> [String] {
         var result: [String] = []

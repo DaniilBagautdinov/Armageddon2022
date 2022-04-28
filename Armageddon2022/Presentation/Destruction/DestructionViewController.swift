@@ -8,8 +8,10 @@
 import UIKit
 
 class DestructionViewController: UIViewController {
-    
+    ///Property
     var allDestroyAsteroids: [Asteroid] = DataService.shared.getAllDestroyAsteroids()
+    
+    // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,7 @@ class DestructionViewController: UIViewController {
         destructionView.collectionView.reloadData()
     }
     
+    // MARK: - Private function and action
     
     @IBAction func clearButton(_ sender: Any) {
         if allDestroyAsteroids.count > 0 {
@@ -47,9 +50,10 @@ class DestructionViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
 extension DestructionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return allDestroyAsteroids.count
     }
     

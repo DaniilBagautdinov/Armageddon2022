@@ -12,15 +12,19 @@ protocol FilterViewControllerDelegate: AnyObject {
 }
 
 class FilterViewController: UIViewController {
-    
+    ///Properties
     var distanceInKilometers: Bool?
     var isDangerousAsteroids: Bool?
     weak var delegate: FilterViewControllerDelegate?
+    
+    // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
     }
+    
+    // MARK: - Private function and action
     
     @IBAction func saveButton(_ sender: Any) {
         guard let filterView = view as? FilterView else { return }

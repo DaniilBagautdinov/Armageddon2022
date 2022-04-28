@@ -12,20 +12,25 @@ protocol AsteroidsCollectionViewCellDelegate: AnyObject {
 }
 
 class AsteroidsCollectionViewCell: UICollectionViewCell {
-    
+    ///Outlets
     @IBOutlet weak var asteroidImageView: UIImageView!
     @IBOutlet weak var asteroidNameLabel: UILabel!
     @IBOutlet weak var asteroidDiameterLabel: UILabel!
     @IBOutlet weak var asteroidDateLabel: UILabel!
     @IBOutlet weak var asteroidDistanceLabel: UILabel!
     @IBOutlet weak var asteroidEstimationLabel: UILabel!
+    
+    //Properties
     var id: String?
     weak var delegate: AsteroidsCollectionViewCellDelegate?
     
+    ///Action
     @IBAction func destroyButton(_ sender: Any) {
         DataService.shared.setAsteroidDestroy(id: id ?? "")
         delegate?.updateInfo()
     }
+    
+    // MARK: - Set data function
     
     func setData(asteroid: Asteroid, distanceInKilometers: Bool) {
         configureViewCell()
@@ -49,6 +54,8 @@ class AsteroidsCollectionViewCell: UICollectionViewCell {
         asteroidDistanceLabel.setFont()
         asteroidEstimationLabel.setFont()
     }
+    
+    // MARK: - Private function
     
     private func configureViewCell() {
         layer.borderColor = UIColor.lightGray.cgColor

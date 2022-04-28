@@ -8,13 +8,15 @@
 import UIKit
 
 class AsteroidsViewController: UIViewController {
-    
+    ///Properties
     var asteroidsNow: [Asteroid]?
     var allAsteroids: [Asteroid] = DataService.shared.getAllAsteroids()
     var dangerousAsteroids: [Asteroid] = DataService.shared.getAllDangerousAsteroids()
     var distanceInKilometers: Bool?
     var isDangerousAsteroids: Bool?
     var scrollOn: Bool = true
+    
+    // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,8 @@ class AsteroidsViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Private function and action
     
     @IBAction func filterButton(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
@@ -56,6 +60,8 @@ class AsteroidsViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
 extension AsteroidsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let asteroidsNow = asteroidsNow {
@@ -66,14 +72,23 @@ extension AsteroidsViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AsteroidsCollectionViewCell", for: indexPath) as? AsteroidsCollectionViewCell else { return UICollectionViewCell()}
+        guard let distanceInKilometers = distanceInKilometers else { return UICollectionViewCell()}
         if let asteroidsNow = asteroidsNow {
-            cell.setData(asteroid: asteroidsNow[indexPath.row], distanceInKilometers: distanceInKilometers ?? true)
+            cell.setData(asteroid: asteroidsNow[indexPath.row], distanceInKilometers: distanceInKilometers)
             cell.delegate = self
         }
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        if let asteroidsNow = asteroidsNow {
+            vc.closeApproachData = DataService.shared.getCloseApproachData(id: asteroidsNow[indexPath.row].id ?? "")
+            vc.asteroid = asteroidsNow[indexPath.row]
+            vc.distanceInKilometers = distanceInKilometers
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentSize.height > 0 && scrollOn {
@@ -115,12 +130,15 @@ extension AsteroidsViewController: UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension AsteroidsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width - 48, height: 330)
     }
 }
+
+// MARK: - FilterViewControllerDelegate
 
 extension AsteroidsViewController: FilterViewControllerDelegate {
     func setFilter(distanceInKilometers: Bool, isDangerousAsteroids: Bool) {
@@ -136,6 +154,8 @@ extension AsteroidsViewController: FilterViewControllerDelegate {
         asteroidsView.collectionView.reloadData()
     }
 }
+
+// MARK: - AsteroidsCollectionViewCellDelegate
 
 extension AsteroidsViewController: AsteroidsCollectionViewCellDelegate {
     func updateInfo() {

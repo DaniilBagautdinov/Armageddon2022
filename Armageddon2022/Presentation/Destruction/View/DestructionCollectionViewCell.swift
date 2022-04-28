@@ -8,15 +8,19 @@
 import UIKit
 
 class DestructionCollectionViewCell: UICollectionViewCell {
-    
+    ///Outlets
     @IBOutlet weak var asteroidNameLabel: UILabel!
     @IBOutlet weak var asteroidImageView: UIImageView!
+    
+    // MARK: - Set data function
     
     func setData(asteroid: Asteroid) {
         configureViewCell()
         asteroidImageView.image = setImage(asteroid: asteroid)
         asteroidNameLabel.text = setName(asteroid: asteroid)
     }
+    
+    // MARK: - Private functions
     
     private func setImage(asteroid: Asteroid) -> UIImage? {
         let diameter = Int((asteroid.diameterMax + asteroid.diameterMin)/2)

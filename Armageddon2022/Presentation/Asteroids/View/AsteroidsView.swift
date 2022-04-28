@@ -8,5 +8,6 @@
 import UIKit
 
 class AsteroidsView: UIView {
+    ///Outlets
     @IBOutlet weak var collectionView: UICollectionView!
 }
